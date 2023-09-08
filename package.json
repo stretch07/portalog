@@ -1,0 +1,24 @@
+{
+  "name": "portalog",
+  "version": "1.0.0",
+  "description": "portable build logging utility for node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stretch07/portalog.git"
+  },
+  "keywords": [
+    "node.js",
+    "logging"
+  ],
+  "author": "stretch07",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stretch07/portalog/issues"
+  },
+  "homepage": "https://github.com/stretch07/portalog#readme",
+  "type": "module"
+}
