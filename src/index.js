@@ -18,7 +18,11 @@ export class LogItem {
         for (let i = 0; i < level; i++) {
             this.tabs += `\t`
         }
-        console.log(`${this.tabs}${emoji} ${item}`)
+        if (emoji) {
+            console.log(`${this.tabs}${emoji} ${item}`)
+        } else {
+            console.log(`${this.tabs}${item}`)
+        }
     }
     addItem(item, emoji) {
         return new LogItem(this.level + 1, item, emoji)
