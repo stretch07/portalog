@@ -1,30 +1,46 @@
+import chalk from "chalk"
+
 export class LogSession {
     constructor() {
         this.logItems = []
     }
-    addItem(item, emoji) {
-        const logItem = new LogItem(0, item, emoji)
+
+    addItem(item, type) {
+        const logItem = new LogItem(0, item, type)
         this.logItems.push(logItem)
         return logItem
     }
 }
 
 export class LogItem {
-    constructor(level, item, emoji) {
+    constructor(level, item, type) {
         this.item = item
-        this.emoji = emoji
+        this.type = type
         this.level = level
         this.tabs = ""
         for (let i = 0; i < level; i++) {
             this.tabs += `\t`
         }
-        if (emoji) {
-            console.log(`${this.tabs}${emoji} ${item}`)
-        } else {
-            console.log(`${this.tabs}${item}`)
+        switch (type) {
+            case "error":
+                console.log(`${this.tabs}${chalk.red(item)}`)
+                break
+            case "warning":
+                console.log(`${this.tabs}${chalk.yellow(item)}`)
+                break
+            case "success":
+                console.log(`${this.tabs}${chalk.green(item)}`)
+                break
+            case "info":
+                console.log(`${this.tabs}${chalk.blue(item)}`)
+                break
+            default:
+                console.log(`${this.tabs}${item}`)
+                break
         }
     }
-    addItem(item, emoji) {
-        return new LogItem(this.level + 1, item, emoji)
+
+    addItem(item, type) {
+        return new LogItem(this.level + 1, item, type)
     }
 }
