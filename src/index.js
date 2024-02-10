@@ -22,6 +22,9 @@ export class LogItem {
             this.tabs += `\t`
         }
         switch (type) {
+            case "fatal":
+                console.log(`${this.tabs}${chalk.bgRed(item)}`)
+                break
             case "error":
                 console.log(`${this.tabs}${chalk.red(item)}`)
                 break
@@ -32,7 +35,7 @@ export class LogItem {
                 console.log(`${this.tabs}${chalk.green(item)}`)
                 break
             case "info":
-                console.log(`${this.tabs}${chalk.blue(item)}`)
+                console.log(`${this.tabs}${chalk.cyan(item)}`)
                 break
             default:
                 console.log(`${this.tabs}${item}`)
