@@ -1,6 +1,6 @@
 {
   "name": "portalog",
-  "version": "1.8.0",
+  "version": "1.8.5",
   "description": "portable build logging utility for node.js",
   "main": "src/index.js",
   "scripts": {
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/stretch07/portalog#readme",
   "type": "module",
   "dependencies": {
-    "chalk": "^5.3.0"
+    "chalk": "^5.3.0",
+    "ora": "^8.0.1"
   }
 }

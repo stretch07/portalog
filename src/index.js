@@ -1,4 +1,5 @@
 import chalk from "chalk"
+import ora from "ora"
 
 export class LogSession {
     constructor() {
@@ -21,29 +22,80 @@ export class LogItem {
         for (let i = 0; i < level; i++) {
             this.tabs += `\t`
         }
+        this.rawText = ""
         switch (type) {
             case "fatal":
-                console.log(`${this.tabs}${chalk.bgRed(item)}`)
+                this.rawText = `${this.tabs}${chalk.bgRed(item)}`
                 break
             case "error":
-                console.log(`${this.tabs}${chalk.red(item)}`)
+                this.rawText = `${this.tabs}${chalk.red(item)}`
                 break
             case "warning":
-                console.log(`${this.tabs}${chalk.yellow(item)}`)
+                this.rawText = `${this.tabs}${chalk.yellow(item)}`
                 break
             case "success":
-                console.log(`${this.tabs}${chalk.green(item)}`)
+                this.rawText = `${this.tabs}${chalk.green(item)}`
                 break
             case "info":
-                console.log(`${this.tabs}${chalk.cyan(item)}`)
+                this.rawText = `${this.tabs}${chalk.cyan(item)}`
                 break
             default:
-                console.log(`${this.tabs}${item}`)
+                this.rawText = `${this.tabs}${item}`
                 break
         }
+        console.log(this.rawText)
+        this.spinner = ora(this.rawText)
     }
 
     addItem(item, type) {
         return new LogItem(this.level + 1, item, type)
+    }
+
+    start() {
+        this.spinner.start()
+    }
+
+    stop() {
+        this.spinner.stop()
+    }
+
+    succeed() {
+        this.spinner.succeed()
+    }
+
+    fail() {
+        this.spinner.fail()
+    }
+
+    warn() {
+        this.spinner.warn()
+    }
+
+    info() {
+        this.spinner.info()
+    }
+
+    clear() {
+        this.spinner.clear()
+    }
+
+    isSpinning() {
+        return this.spinner.isSpinning
+    }
+
+    color(color) {
+        if (color) {
+            this.spinner.color = color
+        } else {
+            return this.spinner.color
+        }
+    }
+
+    spinner(spinner) {
+        if (spinner) {
+            this.spinner.spinner = spinner
+        } else {
+            return this.spinner.spinner
+        }
     }
 }
