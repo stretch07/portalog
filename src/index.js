@@ -44,7 +44,7 @@ export class LogItem {
                 break
         }
         console.log(this.rawText)
-        this.spinner = ora(this.rawText)
+        this.spin = ora(this.rawText)
     }
 
     addItem(item, type) {
@@ -52,50 +52,57 @@ export class LogItem {
     }
 
     start() {
-        this.spinner.start()
+        this.spin.start()
+        return this
     }
 
     stop() {
-        this.spinner.stop()
+        this.spin.stop()
+        return this
     }
 
     succeed() {
-        this.spinner.succeed()
+        this.spin.succeed()
+        return this
     }
 
     fail() {
-        this.spinner.fail()
+        this.spin.fail()
+        return this
     }
 
     warn() {
-        this.spinner.warn()
+        this.spin.warn()
+        return this
     }
 
     info() {
-        this.spinner.info()
+        this.spin.info()
+        return this
     }
 
     clear() {
-        this.spinner.clear()
+        this.spin.clear()
+        return this
     }
 
     isSpinning() {
-        return this.spinner.isSpinning
+        return this.spin.isSpinning
     }
 
     color(color) {
         if (color) {
-            this.spinner.color = color
+            this.spin.color = color
         } else {
-            return this.spinner.color
+            return this.spin.color
         }
     }
 
-    spinner(spinner) {
+    spin(spinner) {
         if (spinner) {
-            this.spinner.spinner = spinner
+            this.spin.spinner = spinner
         } else {
-            return this.spinner.spinner
+            return this.spin.spinner
         }
     }
 }
