@@ -1,6 +1,6 @@
 {
   "name": "portalog",
-  "version": "1.8.5",
+  "version": "1.8.7",
   "description": "portable build logging utility for node.js",
   "main": "src/index.js",
   "scripts": {
